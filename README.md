@@ -17,6 +17,14 @@ profiles['root_url'] = 'https://my-automate-server.mycompany.com'
 
 Then run `chef-server-ctl reconfigure`
 
+On your Automate server, under the Compliance -> Profile Store tab, you will need to 'Get' any profiles you are interested in using.  Take note of the Identifier column, as you will need to modify the profiles attribute to match. Ex:
+
+```
+node.default['audit']['profiles'] = [{
+  name: 'Human readable name',
+  compliance: 'value_from/identifier_column'
+}]
+```
 
 Next, upload this cookbook to your Chef Server with `berks install && berks upload`
 
